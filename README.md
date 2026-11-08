@@ -121,19 +121,7 @@ Para presentar el proyecto ante el docente y compañeros de clase, sugerimos seg
 
 ---
 
-## 💻 6. Instrucciones de Ejecución
-
-* **Ejecución directa:** Abrir directamente el archivo `Codigo/index.html` en cualquier navegador web moderno (Google Chrome, Firefox, Microsoft Edge o Safari).
-* **Ejecución con servidor local (opcional):**
-  ```bash
-  cd Codigo
-  python3 -m http.server 8000
-  ```
-  Abrir en el navegador: `http://localhost:8000`
-
----
-
-## 📁 7. Estructura de Archivos
+## 📁 6. Estructura de Archivos
 
 * `Codigo/index.html`: Archivo principal con la aplicación web completa (HTML, CSS y JavaScript integrados).
 * `Codigo/recetas.html`: Copia sincronizada del código de la aplicación.
