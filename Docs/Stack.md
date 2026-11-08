@@ -1,40 +1,42 @@
-# Stack Tecnológico
+# Stack Tecnológico y Herramientas
 
-#### IAs de apoyo
-| IA | Utilización |
-| :--- | ---: |
-| Gemini | Tareas de análisis, consultas de diseño y búsqueda de información |
-| ChatGPT | Corrección de documentación en Markdown y apoyo conceptual |
-| Claude | Lógica de experiencia de usuario (UX) y diagramado |
-| Antigravity | Pair programming, vibecoding, refactorización visual y testing automatizado |
+Resumen de las tecnologías, herramientas y recursos utilizados en el desarrollo de este prototipo para la materia de Experiencia de Usuario.
 
-#### Lenguajes de código
-| Lenguajes | Utilización |
-| :--- | ---: |
-| HTML5 | Estructuración semántica de las vistas (`<dialog>`, `<details>`, `<header>`, `<main>`, `<input>`) |
-| CSS3 Moderno | Maquetación responsiva, animaciones suaves, variables nativas y estilos de impresión |
-| JavaScript (ES6+) | Lógica de la aplicación en el cliente, manipulación del DOM y gestión de eventos en vivo |
+#### IAs de apoyo durante el desarrollo
+| Herramienta | Rol en el proyecto |
+| :--- | :--- |
+| Gemini | Consultas de diseño, búsqueda de información y análisis |
+| ChatGPT | Apoyo en la redacción de documentación y consultas conceptuales |
+| Claude | Sugerencias sobre flujo de experiencia de usuario (UX) |
+| Antigravity | Asistencia en código, refactorización visual y ajustes de interfaz |
 
-#### APIs Nativas del Navegador (Web APIs)
-| API Nativa | Utilización |
-| :--- | ---: |
-| Web Storage API (`localStorage`) | Persistencia local de las recetas y de la preferencia del tema visual (claro / oscuro) |
-| Canvas API (`HTMLCanvasElement`) | Redimensionamiento y compresión algorítmica de fotografías antes de guardarlas |
-| FileReader & Blob API | Lectura asíncrona de archivos multimedia y generación de descargas de respaldo |
-| HTML5 Dialog API | Ventanas modales nativas para edición de recetas y confirmación de eliminación |
-| Print API (`window.print`) | Generación y maquetación de fichas individuales limpias listas para imprimir en papel o PDF |
+#### Lenguajes
+| Lenguaje | Uso en el proyecto |
+| :--- | :--- |
+| HTML5 | Estructura semántica de la página (`<header>`, `<main>`, `<dialog>`, `<details>`, `<summary>`) |
+| CSS3 | Diseño visual, variables para modo claro/oscuro, diseño adaptable y estilos de impresión |
+| JavaScript (ES6+) | Lógica de la interfaz: interacción con el usuario, filtros, modal y guardado de datos |
 
-#### Interfaz Gráfica y Diseño (UI/UX)
-| Tecnología / Recurso | Utilización |
-| :--- | ---: |
-| CSS Grid & Flexbox | Sistema de maquetación adaptativa multidimensional para pantallas móviles y de escritorio |
-| CSS Custom Properties (Design Tokens) | Paletas dinámicas centralizadas para cambio instantáneo de tema Claro / Oscuro |
-| Google Fonts (Playfair Display) | Tipografía con serifa para títulos, aportando calidez y elegancia editorial gastronómica |
-| Google Fonts (Plus Jakarta Sans) | Tipografía técnica sans-serif geométrica para máxima legibilidad en ingredientes e instrucciones |
-| SVG (Scalable Vector Graphics) | Iconografía vectorial liviana y nítida en cualquier resolución sin dependencias de fuentes externas |
+#### APIs nativas del navegador
+| API Web | Uso en el proyecto |
+| :--- | :--- |
+| `localStorage` | Guardado local de las recetas y de la preferencia de tema (claro / oscuro) |
+| Canvas API | Ajuste y compresión del tamaño de las fotos al momento de subirlas |
+| FileReader y Blob | Lectura del archivo de recetas y descarga de copias de seguridad en formato JSON |
+| HTML5 Dialog API | Ventanas emergentes nativas para el formulario y la confirmación antes de borrar |
+| Print API (`window.print`) | Apertura del diálogo de impresión con el formato limpio de la receta |
 
-#### Formato y Arquitectura de Datos
-| Formato / Patrón | Utilización |
-| :--- | ---: |
-| JSON (*JavaScript Object Notation*) | Modelo de datos serializado para almacenamiento local, importación y exportación de respaldos |
-| Arquitectura *Client-Side Offline-First* | Ejecución 100% en el navegador del usuario sin requerir backend, servidores ni internet continuo |
+#### Diseño e Interfaz (UI/UX)
+| Recurso | Uso en el proyecto |
+| :--- | :--- |
+| CSS Grid y Flexbox | Organización flexible de los elementos para que se vean bien en celular y PC |
+| Variables CSS | Paletas de colores centralizadas para cambiar fácilmente entre tema claro y oscuro |
+| Google Fonts (Playfair Display) | Tipografía para los títulos |
+| Google Fonts (Plus Jakarta Sans) | Tipografía limpia y clara para facilitar la lectura de ingredientes y pasos |
+| SVG | Iconos vectoriales livianos integrados directamente en el código |
+
+#### Manejo de Datos y Enfoque Técnico
+| Aspecto | Detalle |
+| :--- | :--- |
+| Formato JSON | Formato en el que se estructuran las recetas y se exportan/importan los respaldos |
+| Enfoque del prototipo | Ejecución directa en el navegador (*Client-side*), guardando en la memoria local para probar la experiencia de uso sin necesidad de montar una infraestructura de backend |

@@ -1,83 +1,72 @@
 # 🍳 ¿Cómo Funciona Mi Recetario?
-### *Guía sencilla explicada para todo público (sin tecnicismos de programación)*
+### *Guía de funcionamiento y decisiones de diseño del proyecto*
 
 ---
 
-## 🌟 ¿Qué es esta aplicación?
+## 🌟 ¿De qué trata este proyecto?
 
-**Mi Recetario** es una libreta de cocina digital interactiva. Su objetivo principal es ayudarte a organizar, consultar y seguir el paso a paso de tus platos favoritos de forma cómoda, limpia y sin complicaciones mientras estás cocinando.
+**Mi Recetario** es un prototipo desarrollado para la materia de **Experiencia de Usuario (UX)**. La idea detrás de este trabajo no fue crear una plataforma web definitiva para el público en general ni competir con servicios online, sino poner el foco en la interacción: pensar cómo una persona usa una libreta de recetas en una situación real (en plena cocina) y ver qué detalles de diseño hacen que esa tarea sea más fácil y cómoda.
 
-Está diseñada pensando 100% en la **Experiencia de Usuario (UX)**: es intuitiva, rápida y no te obliga a registrarte, recordar contraseñas ni lidiar con publicidad molesta.
-
----
-
-## 🔒 1. ¿Dónde se guardan mis recetas? (Sin servidores ni cuentas)
-
-A diferencia de las páginas web tradicionales que envían tus datos a computadoras en otros países:
-
-* **Tus recetas viven en tu propio dispositivo:** Ya sea que uses tu computadora, tablet o teléfono, la aplicación utiliza una memoria interna segura de tu navegador llamada *Almacenamiento Local* (`localStorage`).
-* **Privacidad total:** Nadie más en internet puede ver lo que escribes; es como tu recetario físico personal en tu mesada.
-* **Funciona sin conexión (Offline):** Una vez que abres la página, puedes desconectarte de internet o poner el teléfono en modo avión y la aplicación seguirá funcionando con normalidad.
+Todo el funcionamiento se pensó desde el punto de vista de quien cocina: que la pantalla no se llene de cosas innecesarias, que sea rápida de consultar y que no te complique con registros ni pasos de más.
 
 ---
 
-## 📸 2. La magia con las fotografías: compresión automática
+## 📸 1. Manejo de fotos sin complicaciones
 
-En muchas páginas, si subes una foto pesada sacada con una cámara moderna, la web se vuelve lenta o se traba.
+Cuando querés sumar una foto a una receta, muchas veces las imágenes que sacamos con el celular pesan varios megabytes. 
 
-* **¿Qué hace nuestra página entre bastidores?** En cuanto seleccionas una foto de tu plato, la página la procesa en milisegundos directamente en la memoria de tu dispositivo:
-  1. La redimensiona a un tamaño equilibrado para pantalla.
-  2. Reduce su peso sin perder calidad visible.
-  3. La guarda optimizada para que tu libreta nunca se sature de espacio.
+* Para que la página no se vuelva lenta ni consuma demasiada memoria del navegador, implementamos un proceso que reduce y ajusta la foto directamente en el dispositivo en el momento en que la seleccionás.
+* De esa forma la imagen se ve bien en las tarjetas, pero ocupa una fracción mínima del espacio y carga al instante.
 
 ---
 
-## 🔍 3. Búsqueda inteligente: encuentra por lo que tienes en la heladera
+## 🔍 2. Búsqueda por nombre o por lo que tengas a mano
 
-¿Tienes papas y huevos y no sabes qué cocinar?
+A veces uno sabe exactamente qué receta quiere buscar, pero otras veces abrís la heladera, ves un par de ingredientes y querés saber qué podés preparar.
 
-* La barra de búsqueda busca en dos lugares al mismo tiempo: en el **título de la receta** y en la **lista de ingredientes**.
-* Con solo escribir una palabra (por ejemplo: *"aceite"* o *"cebolla"*), la pantalla filtra en vivo y te muestra solo las preparaciones que llevan ese ingrediente.
-* Además, puedes filtrar por momentos del menú: *Entradas, Platos principales, Postres o Bebidas*.
-
----
-
-## 👨‍🍳 4. El Asistente de Cocina: una ayuda práctica mientras cocinas
-
-Diseñamos la interfaz para evitar accidentes y manchas en la pantalla:
-
-* **Tarjetas plegables:** Cada receta se mantiene ordenada en una tarjeta compacta. Toca *"Ver preparación e ingredientes"* para desplegarla cuando estés listo.
-* **Lista de compras y preparación interactiva (Checklist):** Cada ingrediente tiene una casilla de verificación. A medida que vas pesando o agregando un ingrediente a la olla, lo tocas y queda tachado en gris suave. Así nunca te preguntarás si ya le pusiste sal o levadura.
-* **Metadatos rápidos:** En un solo vistazo ves el **tiempo** aproximado de cocción, las **porciones** que rinde y la **dificultad** técnica del plato.
+* La barra de búsqueda revisa tanto el **título de la receta** como la **lista de ingredientes**.
+* Si escribís *"papas"* o *"cebolla"*, la pantalla te muestra enseguida qué preparaciones las incluyen.
+* Además, podés filtrar rápido por categorías (*Entrada, Plato principal, Postre, Bebida u Otro*) o ver solo las que marcaste como favoritas con la estrella (⭐).
 
 ---
 
-## 🌙 5. Modo Claro y Modo Oscuro: cuidando tu vista
+## 👨‍🍳 3. Asistente práctico para el momento de cocinar
 
-* En la esquina superior derecha encontrarás un botón con un sol ☀️ o una luna 🌙.
-* Si estás cocinando de noche o en una cocina con luz tenue, activa el **Modo Oscuro** para relajar la vista y ahorrar batería en pantallas de celular. La página recordará tu preferencia para la próxima vez que entres.
+Estar cocinando con las manos ocupadas o con comida en la mesada cambia la forma en que interactuás con la pantalla. Por eso sumamos detalles pensados para ese momento:
 
----
-
-## 🖨️ 6. Ficha de impresión limpia (para la abuela o para pegar en la heladera)
-
-Si prefieres tener la receta en papel o guardarla como PDF:
-
-* Cada tarjeta incluye un botón **"Imprimir"**.
-* En lugar de imprimir toda la página web con botones y menús, genera automáticamente una ficha tipográfica limpia, elegante y formateada especialmente para hojas A4.
+* **Tarjetas plegables:** Cada receta muestra solo lo esencial para no saturar la vista. Con el botón *"Ver preparación e ingredientes"* desplegás los pasos solo cuando los necesitás.
+* **Casillas para tachar ingredientes:** Cada ingrediente tiene una casilla para marcarlo a medida que lo vas usando. Al tocarlo queda tachado en gris claro, lo que ayuda a no dudar si ya agregaste la sal, el aceite o cualquier otro ingrediente.
+* **Datos rápidos de referencia:** En la cabecera de la receta se ven directo el tiempo estimado, las porciones que rinde y la dificultad.
 
 ---
 
-## 💾 7. Copias de seguridad: lleva tus recetas a cualquier lado
+## 🌙 4. Modo Claro y Modo Oscuro
 
-¿Quieres pasarle tus recetas a un familiar o cambiar de celular?
-
-* **Exportar (Descargar):** Toca *"Exportar"* y se descargará un archivito `.json` con todas tus recetas guardadas.
-* **Importar (Restaurar):** En el otro dispositivo, abre la página, toca *"Importar"*, selecciona ese archivito y listo: todas tus recetas se cargarán al instante.
+* En la esquina superior derecha hay un botón para alternar entre el tema claro (☀️) y el tema oscuro (🌙).
+* Esto ayuda a no cansar la vista si estás cocinando de noche o con poca iluminación, y el navegador recuerda tu elección para la próxima vez que abras el proyecto.
 
 ---
 
-## 🛡️ 8. Prevención de errores accidentales
+## 🖨️ 5. Ficha limpia para imprimir
 
-* Si tocas *"Eliminar"* por descuido, la página no borra la receta de inmediato: abre una ventana de diálogo para que confirmes si realmente deseas quitarla, evitando que pierdas tus anotaciones por un clic en falso.
-* Puedes editar cualquier dato o ingrediente en cualquier momento tocando *"Editar"*, sin necesidad de empezar de cero.
+Aunque estemos usando una pantalla, a veces es más cómodo tener la receta en una hoja sobre la mesada para no ensuciar el teléfono o la computadora:
+
+* Cada receta tiene un botón **"Imprimir"**.
+* En lugar de mandar a imprimir toda la página con botones y menús, preparamos un diseño específico de impresión que saca una ficha limpia y ordenada, lista para imprimir o guardar como PDF.
+
+---
+
+## 💾 6. Respaldo de datos (Exportar e Importar)
+
+Al tratarse de un prototipo que guarda la información en la memoria local del navegador (`localStorage`), las recetas se conservan en ese dispositivo pero no se sincronizan automáticamente con otros.
+
+* Para solucionar esto de forma práctica, sumamos dos botones:
+  * **Exportar:** Descarga un archivo sencillo (`.json`) con todas las recetas que tengas cargadas.
+  * **Importar:** Te permite seleccionar ese archivo en otro navegador o computadora para recuperar tus recetas rápidamente.
+
+---
+
+## 🛡️ 7. Prevención de errores comunes
+
+* Para evitar pérdidas accidentales, si tocás *"Eliminar"* en una receta la aplicación te pide confirmación antes de borrarla.
+* Si te equivocaste en un paso o querés cambiar una cantidad, podés tocar *"Editar"* en cualquier momento para modificar los datos directamente en el formulario sin tener que cargar la receta de vuelta.

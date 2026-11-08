@@ -8,124 +8,117 @@
   * Rodrigo Alonso
   * Tiago Mussini
   * Manuel Pintaluba
-* **Docente:** Burno de San Vicente
+* **Docente:** Bruno de San Vicente
 * **Fecha de entrega:** Lunes 9 de Noviembre
 * **Repositorio GitHub:** [https://github.com/manupinta2009-max/Xp_Usuario](https://github.com/manupinta2009-max/Xp_Usuario)
 
 ---
 
-### 🌟 Bienvenida al Proyecto
-¡Bienvenidos a nuestra web! Este es un espacio creado para compartir nuestra pasión por la cocina. Acá cada persona puede publicar sus propias recetas, compartir sus preparaciones y descubrir nuevas ideas de otras personas.
+### 💡 Sobre este proyecto
+Este trabajo fue desarrollado para la materia de **Experiencia de Usuario (UX)**. 
 
-La idea es que todos puedan aportar algo, desde recetas sencillas para el día a día hasta preparaciones más elaboradas. Queremos crear una comunidad donde podamos aprender, inspirarnos y disfrutar de la cocina juntos.
+Queremos aclarar desde el inicio que el proyecto **no fue pensado como una página web terminada para el público en general ni como un producto comercial**. Se trata de un prototipo interactivo orientado a poner en práctica conceptos de usabilidad, diseño de interfaces y accesibilidad.
 
-¡Compartí tus recetas, descubrí nuevas ideas y dejá que otros conozcan tus creaciones!
+El objetivo fue tomar una situación real y cotidiana —estar en la cocina preparando una comida con un dispositivo al lado— e investigar cómo el diseño y los detalles de interacción pueden facilitarle las cosas a quien está cocinando: poder tachar ingredientes usados, buscar preparaciones con lo que hay en la heladera, evitar que se pierdan datos por toques accidentales y ofrecer una lectura clara y descansada.
 
 ---
 
 ## 📌 1. Ficha del Proyecto
-* **Nombre del proyecto:** Mi Recetario — Colección Gastronómica Personal.
-* **Propósito:** Aplicación web interactiva pensada para el uso cotidiano en la cocina, priorizando la facilidad de uso, la velocidad y una experiencia de usuario (UX) limpia y atractiva.
-* **Arquitectura:** 100% del lado del cliente (*Client-side*), sin frameworks pesados ni dependencias externas; funciona de manera autónoma y *offline-first*.
-* **Almacenamiento:** Persistencia de datos en el propio navegador mediante la API de `localStorage`.
+* **Nombre:** Mi Recetario — Libreta Digital de Cocina.
+* **Propósito:** Prototipo enfocado en experimentar con soluciones de Experiencia de Usuario (UX) e interfaz (UI) para la consulta y organización de recetas.
+* **Modalidad de funcionamiento:** Aplicación ejecutada íntegramente en el navegador (*Client-side*), utilizando HTML, CSS y JavaScript nativo.
+* **Manejo de datos:** Al ser un ejercicio práctico sin servidores ni backend externo, la persistencia se realiza localmente en el navegador a través de `localStorage`, sumando herramientas para exportar e importar la información en archivos `.json`.
 
 ---
 
-## 🚀 2. Lista Completa de Funcionalidades
+## 🚀 2. Qué se puede hacer en el prototipo
 
 ### 📋 Gestión de Recetas
-* **Crear recetas:** Formulario modal intuitivo para ingresar título, categoría, ingredientes, preparación y foto.
-* **Editar recetas existentes:** Botón *"Editar"* que precarga los datos en el modal para modificarlos en cualquier momento sin perder información.
-* **Eliminación protegida:** Diálogo de confirmación antes de eliminar para prevenir pérdidas accidentales de recetas.
-* **Metadatos culinarios:** Etiquetas de **tiempo de preparación** (ej: *35 min*), **porciones** (ej: *4 porc.*) y **dificultad** (*Fácil, Media, Difícil*).
+* **Cargar recetas:** Ventana modal sencilla para ingresar título, categoría, ingredientes, preparación, foto y datos clave.
+* **Editar sin complicaciones:** Botón para abrir la receta en el formulario, ajustar cualquier detalle y guardar los cambios.
+* **Confirmación para borrar:** Si tocás el botón de eliminar, se pide confirmación antes de borrar para no perder nada por error.
+* **Datos rápidos de cocina:** Etiquetas visibles de tiempo estimado de preparación, porciones y dificultad (*Fácil, Media, Difícil*).
 
-### 🍳 Asistente Interactivo de Cocina
-* **Checklist interactivo de ingredientes:** Casillas de verificación para marcar y tachar los ingredientes ya utilizados mientras se cocina.
-* **Acordeón desplegable:** Contenido estructurado que mantiene las tarjetas compactas y legibles en la pantalla principal.
-* **Ficha de impresión individual:** Genera una hoja limpia lista para imprimir en papel o guardar en PDF (sin menús ni botones molestos).
+### 🍳 Asistente para el momento de cocinar
+* **Checklist de ingredientes:** Podés ir marcando con un toque cada ingrediente a medida que lo vas agregando a la olla; queda tachado suavemente para no perderte.
+* **Tarjetas plegables:** La preparación se despliega con el botón *"Ver preparación e ingredientes"*, manteniendo la pantalla limpia y ordenada.
+* **Ficha para imprimir:** Genera una versión limpia de la receta, pensada para imprimir en papel o guardar en PDF sin que salgan los botones ni la barra de navegación.
 
-### 🔍 Organización y Filtros
-* **Búsqueda en tiempo real bi-direccional:** Filtra instantáneamente tanto por el **nombre de la receta** como por **cualquier ingrediente** que contenga (ej. *"papas"* o *"huevo"*).
-* **Filtrado por categorías:** Clasificación inmediata por *Entrada, Plato principal, Postre, Bebida u Otro*.
-* **Sistema de favoritos (⭐):** Permite marcar recetas destacadas con un clic y filtrarlas con el botón *"Favoritos"*.
+### 🔍 Búsqueda y Organización
+* **Búsqueda por nombre y por ingredientes:** Si ponés *"papas"* o *"huevo"*, busca tanto en el título como dentro de la lista de ingredientes de cada receta.
+* **Filtros por categoría:** Filtrado al instante por *Entrada, Plato principal, Postre, Bebida u Otro*.
+* **Favoritos (⭐):** Marcá las recetas que más uses con la estrella y filtralas cuando quieras con el botón *"Favoritos"*.
 
-### 💾 Almacenamiento y Portabilidad
-* **Compresión automática de imágenes:** Redimensiona y optimiza las fotos subidas mediante la API de Canvas antes de guardarlas, evitando saturar el límite de almacenamiento de `localStorage`.
-* **Exportar copia de seguridad (JSON):** Descarga toda la base de datos de recetas en un archivo estándar `.json`.
-* **Importar copia de seguridad:** Permite cargar y restaurar recetas desde cualquier archivo JSON previamente exportado.
+### 💾 Manejo de Fotos y Respaldo
+* **Ajuste automático de imágenes:** Al subir una foto, la aplicación la redimensiona y comprime en el momento para no saturar la memoria local del navegador ni poner lenta la interfaz.
+* **Exportar recetas (JSON):** Descarga un archivo con las recetas guardadas para tener una copia de seguridad.
+* **Importar recetas:** Permite cargar ese archivo en cualquier otro navegador para recuperar o mover las recetas.
 
-### 🌓 Interfaz y Accesibilidad
-* **Modo Claro / Modo Oscuro (Dark Mode):** Interruptor en la cabecera (☀️ / 🌙) con guardado automático de la preferencia del usuario.
-* **Diseño adaptativo (Responsive Design):** Interfaz optimizada para celulares, tablets y computadoras de escritorio.
-* **Estado vacío amigable:** Ilustración y mensaje explicativo cuando una búsqueda no arroja resultados.
-
----
-
-## 🎨 3. Principios de Experiencia de Usuario (UX/UI) Aplicados
-
-* **Prevención de errores del usuario:** El modal de confirmación antes de borrar evita acciones destructivas involuntarias.
-* **Reducción de fricción:** El usuario no necesita redimensionar sus fotos con programas externos; la app las comprime automáticamente en el navegador.
-* **Retroalimentación inmediata (Feedback visual):** Microinteracciones en botones (*hover*, *active*), cambio instantáneo del estado de los checkboxes y animaciones suaves.
-* **Jerarquía tipográfica:** Combinación equilibrada entre *Playfair Display* (elegancia editorial) y *Plus Jakarta Sans* (alta legibilidad técnica).
-* **Accesibilidad visual:** Contrastes de color certificados y soporte para modo oscuro pensado para ambientes con poca luz en la cocina.
-* **Diseño táctil:** Botones con áreas de toque amplias (mínimo 44px) ideales para su uso en teléfonos móviles mientras se manipulan alimentos.
+### 🌓 Interfaz y Adaptabilidad
+* **Modo Claro y Oscuro:** Selector en la barra superior (☀️ / 🌙) para que la pantalla no moleste a la vista en ambientes con poca luz.
+* **Diseño adaptable:** Funciona cómodamente tanto en computadoras como en tablets y celulares.
+* **Mensaje cuando no hay resultados:** Si la búsqueda no coincide con ninguna receta, muestra un aviso claro y amigable en vez de dejar la pantalla vacía.
 
 ---
 
-## 🛠️ 4. Lista de Tecnologías Utilizadas
+## 🎨 3. Criterios de Experiencia de Usuario (UX/UI) que aplicamos
 
-* **HTML5:** Marcado semántico (`<header>`, `<dialog>`, `<details>`, `<summary>`, `<main>`, `<input type="file">`).
-* **CSS3 Moderno:**
-  * Variables CSS nativas (*Design Tokens* para paleta clara y oscura).
-  * CSS Grid y Flexbox responsivo.
-  * Animaciones suaves con curvas de aceleración cubic-bezier.
-  * Reglas para medios impresos (`@media print`).
-* **JavaScript Moderno (ES6+):**
-  * Manipulación reactiva del DOM sin librerías externas.
-  * API `localStorage` para almacenamiento persistente.
-  * API `HTMLCanvasElement` para compresión y optimización de imágenes en el cliente.
-  * API `FileReader` y `Blob` para exportar e importar datos en formato JSON.
-* **Tipografías de Google Fonts:**
-  * *Playfair Display* (títulos con personalidad gastronómica).
-  * *Plus Jakarta Sans* (textos técnicos y legibilidad).
+* **Evitar errores accidentales:** El diálogo antes de borrar una receta previene que se pierda información por un toque involuntario en la pantalla.
+* **Cargar fotos sin trabas:** El usuario no tiene que preocuparse por el tamaño o peso de la foto; la interfaz la procesa directo en el navegador.
+* **Respuesta visual clara:** Los botones y casillas responden de inmediato al tacto o al pasar el cursor, dando la seguridad de que la acción se registró.
+* **Tipografías legibles y adecuadas:** Usamos *Playfair Display* para títulos gastronómicos cálidos y *Plus Jakarta Sans* para que los ingredientes y las instrucciones se lean con total claridad, incluso a cierta distancia.
+* **Pensado para usar en la cocina:** Botones con buen tamaño para tocar fácilmente desde el celular y modo oscuro para cuidar la vista en horarios nocturnos.
 
 ---
 
-## 🎤 5. Guía de Presentación Paso a Paso (Demostración en Vivo para la Clase)
+## 🛠️ 4. Tecnologías Utilizadas
 
-Para presentar el proyecto ante el docente y compañeros de clase, sugerimos seguir este orden demostrativo:
+* **HTML5:** Estructuración semántica con elementos nativos (`<header>`, `<main>`, `<dialog>`, `<details>`, `<summary>`).
+* **CSS3:**
+  * Variables CSS para cambiar fácilmente entre tema claro y oscuro.
+  * Flexbox y CSS Grid para que el diseño se adapte a cualquier pantalla.
+  * Estilos de impresión específicos con `@media print`.
+* **JavaScript Nativo (ES6+):**
+  * Manejo del DOM y eventos en tiempo real sin librerías externas.
+  * API `localStorage` para guardar las recetas y el tema seleccionado en el navegador.
+  * API `Canvas` para redimensionar y optimizar las fotografías.
+  * `FileReader` y `Blob` para la exportación e importación del archivo JSON.
+* **Google Fonts:** Tipografías *Playfair Display* y *Plus Jakarta Sans*.
 
-1. **Apertura e Introducción:**
-   * Explicar el objetivo del proyecto: crear un recetario enfocado en la experiencia de usuario real mientras se cocina.
-   * Mostrar el diseño visual general, la paleta cálida y la jerarquía de las tarjetas.
+---
 
-2. **Demostración de Búsqueda y Filtros:**
-   * Escribir *"papas"* en el buscador para demostrar que busca dentro de los ingredientes y no solo en el título.
-   * Filtrar por categoría (*Plato principal*).
-   * Marcar la receta con la estrella (⭐) y presionar el botón *"Favoritos"*.
+## 🎤 5. Guía para la Demostración en Clase
 
-3. **Demostración del Asistente en la Cocina:**
-   * Abrir el acordeón *"Ver preparación e ingredientes"*.
-   * Tocar los checkboxes para simular cómo se tachan los ingredientes ya usados mientras se cocina.
-   * Presionar el botón *"Imprimir"* para mostrar cómo se genera una ficha limpia para papel o PDF sin barras ni botones.
+Para la presentación del trabajo ante el docente y el grupo, este es el recorrido que pensamos:
 
-4. **Demostración de Creación y Edición:**
-   * Abrir el modal *"Añadir receta"* y mostrar los metadatos (tiempo, porciones, dificultad).
-   * Cargar una foto pesada y explicar cómo la web la comprime automáticamente sin trabarse.
-   * Editar una receta existente para comprobar que no se pierden datos.
-   * Intentar eliminar una receta para mostrar el diálogo de confirmación que previene errores del usuario.
+1. **Introducción breve:**
+   * Contar el objetivo del trabajo: explorar la experiencia de usuario (UX) en una libreta de recetas pensada para usar mientras se cocina.
+   * Mostrar el diseño general, la organización visual y el estilo de las tarjetas.
 
-5. **Demostración de Modo Oscuro y Respaldo:**
-   * Tocar el botón 🌙 en la cabecera para alternar a tema oscuro y explicar la ventaja al cocinar con poca luz.
-   * Presionar *"Exportar"* para descargar el archivo `.json` de respaldo.
+2. **Búsqueda y filtros:**
+   * Escribir un ingrediente (como *"papas"*) para mostrar cómo el buscador encuentra recetas por lo que tenemos a mano y no solo por el título.
+   * Probar el filtro de categorías y marcar una receta como favorita (⭐).
+
+3. **Uso en plena cocina:**
+   * Desplegar una receta y marcar ingredientes en el checklist para simular el paso a paso de una preparación.
+   * Tocar el botón *"Imprimir"* para ver cómo se genera la ficha limpia sin botones de la interfaz.
+
+4. **Carga y edición:**
+   * Mostrar el formulario para añadir una receta con sus datos (tiempo, porciones, dificultad).
+   * Cargar una foto para mostrar cómo se procesa automáticamente.
+   * Editar una receta y luego mostrar el aviso de confirmación que aparece si intentamos borrarla.
+
+5. **Modo oscuro y respaldo:**
+   * Cambiar entre modo claro y oscuro con el botón de la cabecera.
+   * Mostrar la opción de exportar las recetas a un archivo `.json` de respaldo.
 
 ---
 
 ## 📁 6. Estructura de Archivos
 
-* `Codigo/index.html`: Archivo principal con la aplicación web completa (HTML, CSS y JavaScript integrados).
-* `Codigo/recetas.html`: Copia sincronizada del código de la aplicación.
-* `Codigo/tortilla.jpg`: Fotografía optimizada para la receta inicial de Tortilla de papas.
-* `Docs/Como_Funciona.md`: Guía explicativa para personas sin conocimientos de código.
-* `Docs/Stack.md`: Ficha técnica del Stack Tecnológico del proyecto.
-* `README.md`: Este documento de presentación y guía técnica para la clase.
+* `Codigo/index.html`: Archivo principal con la estructura, estilos y lógica del recetario.
+* `Codigo/recetas.html`: Copia sincronizada del archivo de la aplicación.
+* `Codigo/tortilla.jpg`: Foto de muestra utilizada para la receta inicial de Tortilla de papas.
+* `Docs/Como_Funciona.md`: Explicación sencilla del funcionamiento y las decisiones tomadas en el diseño.
+* `Docs/Stack.md`: Resumen técnico de las tecnologías, herramientas y recursos utilizados.
+* `README.md`: Presentación general del proyecto y guía para la clase.
