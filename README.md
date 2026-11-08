@@ -1,5 +1,13 @@
 # 📖 Proyecto: Mi Recetario (Experiencia de Usuario)
 
+### 👨‍🎓 Datos de Presentación
+* **Institución:** UTU (Universidad del Trabajo del Uruguay)
+* **Asignatura:** Experiencia de Usuario (UX / UI)
+* **Proyecto:** Mi Recetario — Colección Gastronómica Personal
+* **Estudiante:** Manuel Pintado (`manupinta2009-max`)
+* **Repositorio GitHub:** [https://github.com/manupinta2009-max/Xp_Usuario](https://github.com/manupinta2009-max/Xp_Usuario)
+* **Fecha:** Noviembre 2026
+
 Documento de presentación y guía técnica del proyecto **Mi Recetario**, desarrollado para la asignatura de **Experiencia de Usuario (UX/UI)** en **UTU**.
 
 ---

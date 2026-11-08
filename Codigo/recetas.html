@@ -1466,11 +1466,17 @@
       porciones: "4 porc.",
       dificultad: "Fácil",
       favorito: true,
-      imagen: null,
+      imagen: "tortilla.jpg",
       ingredientes: "4 papas medianas\n5 huevos de campo\n1 pizca de sal\nAceite de oliva virgen extra",
       instrucciones: "1. Cortar las papas en rodajas finas.\n2. Freírlas en aceite hasta que estén tiernas y ligeramente doradas.\n3. Mezclar con los huevos batidos y sazonar con sal.\n4. Cocinar en sartén antiadherente de ambos lados hasta lograr el punto deseado."
     }
   ];
+
+  // Si la tortilla por defecto no tenía imagen, asignarle la nueva foto
+  const tortillaDefecto = recetas.find(r => r.id === 1 && (!r.imagen || r.imagen === "null"));
+  if (tortillaDefecto) {
+    tortillaDefecto.imagen = "tortilla.jpg";
+  }
 
   let siguienteId = recetas.reduce((max, r) => (r.id > max ? r.id : max), 0) + 1;
   let imagenSeleccionada = null;
@@ -1511,7 +1517,7 @@
     try {
       localStorage.setItem("recetas_data", JSON.stringify(recetas));
     } catch (error) {
-      alert("Error: El almacenamiento local está lleno. Intenta reducir o quitar algunas imágenes.");
+      console.warn("Aviso: No se pudo almacenar en localStorage:", error);
     }
   }
 
@@ -1900,8 +1906,8 @@
       '.foto { width: 100%; max-height: 280px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }' +
       'h2 { font-size: 1.1rem; text-transform: uppercase; border-bottom: 1px solid #ddd; padding-bottom: 4px; margin-top: 20px; color: #2a5a43; }' +
       'pre { font-family: inherit; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.6; }' +
-      '</style>' +
-      '</head>' +
+      '<\/style>' +
+      '<\/head>' +
       '<body>' +
       '<span class="cat">' + r.categoria + '</span>' +
       '<h1>' + r.titulo + '</h1>' +
@@ -1911,7 +1917,7 @@
       '<pre>' + r.ingredientes + '</pre>' +
       '<h2>Instrucciones</h2>' +
       '<pre>' + r.instrucciones + '</pre>' +
-      '</body></html>'
+      '<\/body><\/html>'
     );
     ventanaImpresion.document.close();
     ventanaImpresion.focus();
