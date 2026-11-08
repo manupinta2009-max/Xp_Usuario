@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Recetario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --papel: #FBF8F3;
+    --tarjeta: #FFFFFF;
+    --tinta: #241E1A;
+    --tinta-suave: #685E55;
+    --tinta-tenue: #9E9488;
+    --salvia: #3E664E;
+    --salvia-oscuro: #2D4C39;
+    --salvia-claro: #EFF5F1;
+    --mostaza: #C99738;
+    --mostaza-claro: #FBF4E6;
+    --terracota: #B84733;
+    --terracota-suave: #FDF3F1;
+    --borde: #E7DFD3;
+    --borde-suave: #F0EAE1;
+    --sombra-sm: 0 2px 6px rgba(36, 30, 26, 0.04);
+    --sombra: 0 6px 18px rgba(36, 30, 26, 0.06), 0 1px 3px rgba(36, 30, 26, 0.03);
+    --sombra-hover: 0 14px 30px rgba(36, 30, 26, 0.1), 0 2px 6px rgba(36, 30, 26, 0.04);
+    --sombra-modal: 0 24px 50px -10px rgba(36, 30, 26, 0.25);
+    --radio: 14px;
+    --transicion: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background-color: var(--papel);
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(201, 151, 56, 0.06) 0%, transparent 65%),
+      radial-gradient(circle at 1px 1px, rgba(104, 94, 85, 0.07) 1px, transparent 0);
+    background-size: 100% 100%, 24px 24px;
+    color: var(--tinta);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 40px 24px 90px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== Encabezado ===== */
+  header {
+    max-width: 1020px;
+    margin: 0 auto 36px;
+    text-align: center;
+  }
+
+  .header-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mostaza);
+    background: var(--mostaza-claro);
+    padding: 5px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(201, 151, 56, 0.25);
+    margin-bottom: 12px;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--salvia-oscuro);
+    letter-spacing: -0.02em;
+  }
+
+  header p {
+    margin: 0;
+    color: var(--tinta-suave);
+    font-size: 1.05rem;
+    font-weight: 400;
+  }
+
+  /* ===== Barra de herramientas: buscar, filtrar, añadir ===== */
+  .barra {
+    max-width: 1020px;
+    margin: 0 auto 36px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    background: var(--tarjeta);
+    padding: 14px 18px;
+    border-radius: var(--radio);
+    border: 1px solid var(--borde);
+    box-shadow: var(--sombra-sm);
+  }
+
+  .barra input[type="text"],
+  .barra select {
+    font-family: inherit;
+    font-size: 0.92rem;
+    padding: 10px 14px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    background: var(--papel);
+    color: var(--tinta);
+    transition: var(--transicion);
+  }
+
+  .barra input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .barra input[type="text"]:focus,
+  .barra select:focus,
+  #formulario input:focus,
+  #formulario select:focus,
+  #formulario textarea:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--salvia);
+    box-shadow: 0 0 0 3px rgba(62, 102, 78, 0.15);
+  }
+
+  .btn-principal {
+    margin-left: auto;
+    background: linear-gradient(135deg, var(--salvia) 0%, var(--salvia-oscuro) 100%);
+    color: #ffffff;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(45, 76, 57, 0.25);
+    transition: var(--transicion);
+  }
+
+  .btn-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(45, 76, 57, 0.35);
+  }
+
+  .btn-principal:active {
+    transform: translateY(0);
+  }
+
+  /* ===== Cuadrícula de tarjetas ===== */
+  .cuadricula {
+    max-width: 1020px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 26px;
+  }
+
+  .receta {
+    background-color: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    box-shadow: var(--sombra);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transicion);
+  }
+
+  .receta:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-hover);
+    border-color: #D6CBC0;
+  }
+
+  /* Cinta artesanal superior */
+  .receta::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    width: 64px;
+    height: 18px;
+    background: rgba(212, 169, 62, 0.35);
+    transform: translateX(-50%);
+    border: 1px dashed rgba(180, 140, 40, 0.45);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    backdrop-filter: blur(2px);
+    z-index: 2;
+  }
+
+  .receta-imagen {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--borde-suave);
+    transition: transform 0.35s ease;
+  }
+
+  .receta:hover .receta-imagen {
+    transform: scale(1.02);
+  }
+
+  .receta-imagen-placeholder {
+    width: 100%;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.2rem;
+    background: linear-gradient(135deg, #F8F3EA 0%, #ECE4D4 100%);
+    border-bottom: 1px solid var(--borde-suave);
+  }
+
+  .receta-cuerpo {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .receta-categoria {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--salvia-claro);
+    color: var(--salvia-oscuro);
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(62, 102, 78, 0.15);
+  }
+
+  .receta h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin: 2px 0 0;
+    color: var(--tinta);
+    line-height: 1.25;
+  }
+
+  .receta details {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    border: 1px solid var(--borde-suave);
+    border-radius: 10px;
+    background: #FAF7F2;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .receta details[open] {
+    border-color: var(--borde);
+  }
+
+  .receta summary {
+    cursor: pointer;
+    color: var(--salvia-oscuro);
+    font-weight: 600;
+    padding: 10px 14px;
+    background: var(--salvia-claro);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    transition: var(--transicion);
+  }
+
+  .receta summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .receta summary::after {
+    content: "▾";
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+  }
+
+  .receta details[open] summary::after {
+    transform: rotate(180deg);
+  }
+
+  .receta details[open] summary {
+    border-bottom: 1px solid var(--borde-suave);
+  }
+
+  .receta h3 {
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--salvia);
+    margin: 14px 14px 6px;
+  }
+
+  .receta pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--tinta-suave);
+    margin: 0 14px 14px;
+    background: transparent;
+  }
+
+  .receta-pie {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--borde-suave);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-eliminar {
+    background: transparent;
+    border: 1px solid #ECC8C1;
+    color: var(--terracota);
+    border-radius: 8px;
+    padding: 5px 12px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicion);
+  }
+
+  .btn-eliminar:hover {
+    background: var(--terracota);
+    border-color: var(--terracota);
+    color: #ffffff;
+  }
+
+  .vacio {
+    max-width: 500px;
+    margin: 50px auto;
+    text-align: center;
+    background: var(--tarjeta);
+    border: 1px dashed var(--borde);
+    border-radius: var(--radio);
+    padding: 40px 24px;
+    color: var(--tinta-suave);
+    font-size: 1rem;
+    box-shadow: var(--sombra-sm);
+  }
+
+  .vacio::before {
+    content: "🍽️";
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+
+  /* ===== Modal (dialog) para añadir receta ===== */
+  dialog {
+    border: none;
+    border-radius: 18px;
+    padding: 0;
+    max-width: 520px;
+    width: 92%;
+    box-shadow: var(--sombra-modal);
+    background: var(--tarjeta);
+    animation: dialogAparecer 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  dialog::backdrop {
+    background: rgba(36, 30, 26, 0.5);
+    backdrop-filter: blur(6px);
+  }
+
+  @keyframes dialogAparecer {
+    from {
+      opacity: 0;
+      transform: scale(0.96) translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .dialog-contenido {
+    padding: 28px 30px;
+  }
+
+  .dialog-contenido h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    margin: 0 0 4px;
+    color: var(--salvia-oscuro);
+  }
+
+  .dialog-subtitulo {
+    margin: 0 0 16px;
+    font-size: 0.88rem;
+    color: var(--tinta-suave);
+  }
+
+  #formulario label {
+    display: block;
+    margin-top: 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--tinta-suave);
+  }
+
+  #formulario input[type="text"],
+  #formulario select,
+  #formulario textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.94rem;
+    background: var(--papel);
+    color: var(--tinta);
+    transition: var(--transicion);
+  }
+
+  #formulario input[type="file"] {
+    width: 100%;
+    margin-top: 6px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: var(--tinta-suave);
+  }
+
+  #previa {
+    margin-top: 10px;
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: none;
+    border: 1px solid var(--borde);
+  }
+
+  .dialog-botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .dialog-botones button {
+    font-family: inherit;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: var(--transicion);
+  }
+
+  #cancelar {
+    background: var(--papel);
+    border: 1px solid var(--borde);
+    color: var(--tinta-suave);
+  }
+
+  #cancelar:hover {
+    background: var(--borde-suave);
+    color: var(--tinta);
+  }
+
+  #guardar {
+    background: linear-gradient(135deg, var(--salvia) 0%, var(--salvia-oscuro) 100%);
+    border: none;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(45, 76, 57, 0.25);
+  }
+
+  #guardar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(45, 76, 57, 0.35);
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 24px 14px 60px; }
+    header h1 { font-size: 2.2rem; }
+    .barra { padding: 12px; gap: 8px; }
+    .btn-principal { width: 100%; margin-left: 0; justify-content: center; }
+    .dialog-contenido { padding: 20px 16px; }
+  }
+
+</style>
+</head>
+<body>
+
+  <header>
+    <span class="header-tag">✦ Colección Gastronómica ✦</span>
+    <h1>Mi Recetario</h1>
+    <p>Una caja de recetas, hecha entre todos.</p>
+  </header>
+
+  <div class="barra">
+    <input type="text" id="buscador" placeholder="Buscar por nombre...">
+    <select id="filtroCategoria">
+      <option value="">Todas las categorías</option>
+      <option value="Entrada">Entrada</option>
+      <option value="Plato principal">Plato principal</option>
+      <option value="Postre">Postre</option>
+      <option value="Bebida">Bebida</option>
+      <option value="Otro">Otro</option>
+    </select>
+    <button class="btn-principal" id="abrirDialogo">+ Añadir receta</button>
+  </div>
+
+  <div class="cuadricula" id="cuadricula"></div>
+  <p class="vacio" id="mensajeVacio" style="display:none;">No hay recetas que coincidan con la búsqueda.</p>
+
+  <!-- Ventana modal para añadir una receta -->
+  <dialog id="dialogo">
+    <div class="dialog-contenido">
+      <h2>Nueva receta</h2>
+      <p class="dialog-subtitulo">Añade los detalles de tu preparación culinaria.</p>
+      <form id="formulario">
+        <label for="titulo">Nombre</label>
+        <input type="text" id="titulo" required>
+
+        <label for="categoria">Categoría</label>
+        <select id="categoria" required>
+          <option value="Entrada">Entrada</option>
+          <option value="Plato principal">Plato principal</option>
+          <option value="Postre">Postre</option>
+          <option value="Bebida">Bebida</option>
+          <option value="Otro">Otro</option>
+        </select>
+
+        <label for="imagen">Foto (opcional)</label>
+        <input type="file" id="imagen" accept="image/*">
+        <img id="previa" alt="Vista previa">
+
+        <label for="ingredientes">Ingredientes (uno por línea)</label>
+        <textarea id="ingredientes" rows="3" required></textarea>
+
+        <label for="instrucciones">Instrucciones</label>
+        <textarea id="instrucciones" rows="4" required></textarea>
+
+        <div class="dialog-botones">
+          <button type="button" id="cancelar">Cancelar</button>
+          <button type="submit" id="guardar">Guardar receta</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+<script>
+
+  // ---- "Base de datos" en memoria ----
+  let recetas = [
+    {
+      id: 1,
+      titulo: "Tortilla de papas",
+      categoria: "Plato principal",
+      imagen: null,
+      ingredientes: "4 papas\n5 huevos\nSal\nAceite",
+      instrucciones: "Cortar las papas en rodajas finas.\nFreírlas en aceite hasta que estén blandas.\nMezclar con los huevos batidos y sal.\nCocinar en sartén de ambos lados."
+    }
+  ];
+
+  let siguienteId = 2;
+  let imagenSeleccionada = null; // guarda la imagen del formulario mientras se completa
+
+  // ---- Referencias a elementos del HTML ----
+  const cuadricula = document.getElementById("cuadricula");
+  const mensajeVacio = document.getElementById("mensajeVacio");
+  const dialogo = document.getElementById("dialogo");
+  const formulario = document.getElementById("formulario");
+  const inputImagen = document.getElementById("imagen");
+  const previa = document.getElementById("previa");
+  const buscador = document.getElementById("buscador");
+  const filtroCategoria = document.getElementById("filtroCategoria");
+
+  // Iconos simples por categoría, para cuando no hay foto
+  const iconos = {
+    "Entrada": "🥗",
+    "Plato principal": "🍲",
+    "Postre": "🍰",
+    "Bebida": "🥤",
+    "Otro": "🍽️"
+  };
+
+  // ---- Dibuja las tarjetas en pantalla, aplicando el filtro actual ----
+  function mostrarRecetas() {
+    const texto = buscador.value.trim().toLowerCase();
+    const categoria = filtroCategoria.value;
+
+    const filtradas = recetas.filter(function (r) {
+      const coincideTexto = r.titulo.toLowerCase().includes(texto);
+      const coincideCategoria = categoria === "" || r.categoria === categoria;
+      return coincideTexto && coincideCategoria;
+    });
+
+    cuadricula.innerHTML = "";
+    mensajeVacio.style.display = filtradas.length === 0 ? "block" : "none";
+
+    filtradas.forEach(function (receta) {
+      const tarjeta = document.createElement("div");
+      tarjeta.className = "receta";
+
+      const imagenHtml = receta.imagen
+        ? `<img class="receta-imagen" src="${receta.imagen}" alt="Foto de ${receta.titulo}">`
+        : `<div class="receta-imagen-placeholder">${iconos[receta.categoria] || "🍽️"}</div>`;
+
+      tarjeta.innerHTML = `
+        ${imagenHtml}
+        <div class="receta-cuerpo">
+          <span class="receta-categoria">${receta.categoria}</span>
+          <h2>${receta.titulo}</h2>
+          <details>
+            <summary>Ver receta completa</summary>
+            <h3>Ingredientes</h3>
+            <pre>${receta.ingredientes}</pre>
+            <h3>Instrucciones</h3>
+            <pre>${receta.instrucciones}</pre>
+          </details>
+          <div class="receta-pie">
+            <button class="btn-eliminar" data-id="${receta.id}">Eliminar</button>
+          </div>
+        </div>
+      `;
+
+      cuadricula.appendChild(tarjeta);
+    });
+  }
+
+  // ---- Abrir / cerrar el modal ----
+  document.getElementById("abrirDialogo").addEventListener("click", function () {
+    dialogo.showModal();
+  });
+
+  document.getElementById("cancelar").addEventListener("click", function () {
+    dialogo.close();
+    formulario.reset();
+    previa.style.display = "none";
+    imagenSeleccionada = null;
+  });
+
+  // ---- Leer la imagen elegida y mostrar una vista previa ----
+  inputImagen.addEventListener("change", function () {
+    const archivo = inputImagen.files[0];
+    if (!archivo) return;
+
+    const lector = new FileReader();
+    lector.onload = function () {
+      imagenSeleccionada = lector.result; // texto largo tipo "data:image/png;base64,...."
+      previa.src = imagenSeleccionada;
+      previa.style.display = "block";
+    };
+    lector.readAsDataURL(archivo);
+  });
+
+  // ---- Guardar la receta nueva ----
+  formulario.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    recetas.push({
+      id: siguienteId++,
+      titulo: document.getElementById("titulo").value,
+      categoria: document.getElementById("categoria").value,
+      imagen: imagenSeleccionada,
+      ingredientes: document.getElementById("ingredientes").value,
+      instrucciones: document.getElementById("instrucciones").value
+    });
+
+    formulario.reset();
+    previa.style.display = "none";
+    imagenSeleccionada = null;
+    dialogo.close();
+    mostrarRecetas();
+  });
+
+  // ---- Eliminar una receta (delegamos el evento en la cuadrícula entera) ----
+  cuadricula.addEventListener("click", function (evento) {
+    if (evento.target.classList.contains("btn-eliminar")) {
+      const id = Number(evento.target.getAttribute("data-id"));
+      recetas = recetas.filter(function (r) { return r.id !== id; });
+      mostrarRecetas();
+    }
+  });
+
+  // ---- Buscar y filtrar en vivo ----
+  buscador.addEventListener("input", mostrarRecetas);
+  filtroCategoria.addEventListener("change", mostrarRecetas);
+
+  // ---- Primer dibujo al cargar la página ----
+  mostrarRecetas();
+
+</script>
+
+</body>
+</html>
