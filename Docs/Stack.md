@@ -38,10 +38,3 @@
 | :--- | ---: |
 | JSON (*JavaScript Object Notation*) | Modelo de datos serializado para almacenamiento local, importación y exportación de respaldos |
 | Arquitectura *Client-Side Offline-First* | Ejecución 100% en el navegador del usuario sin requerir backend, servidores ni internet continuo |
-
-#### Control de Versiones y Entorno
-| Herramienta / Plataforma | Utilización |
-| :--- | ---: |
-| Git | Control de versiones local, ramas, seguimiento de cambios y commits estructurados |
-| GitHub | Alojamiento del repositorio remoto para colaboración académica y control de entregas |
-| Navegadores Web (Chromium, Firefox, Safari) | Entorno de ejecución multiplataforma para computadoras y teléfonos inteligentes |
