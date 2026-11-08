@@ -12,7 +12,14 @@
 * **Fecha de entrega:** Lunes 9 de Noviembre
 * **Repositorio GitHub:** [https://github.com/manupinta2009-max/Xp_Usuario](https://github.com/manupinta2009-max/Xp_Usuario)
 
-Documento de presentación y guía técnica del proyecto **Mi Recetario**, desarrollado para la asignatura de **Experiencia de Usuario (UX/UI)** en **UTU**.
+---
+
+### 🌟 Bienvenida al Proyecto
+¡Bienvenidos a nuestra web! Este es un espacio creado para compartir nuestra pasión por la cocina. Acá cada persona puede publicar sus propias recetas, compartir sus preparaciones y descubrir nuevas ideas de otras personas.
+
+La idea es que todos puedan aportar algo, desde recetas sencillas para el día a día hasta preparaciones más elaboradas. Queremos crear una comunidad donde podamos aprender, inspirarnos y disfrutar de la cocina juntos.
+
+¡Compartí tus recetas, descubrí nuevas ideas y dejá que otros conozcan tus creaciones!
 
 ---
 
@@ -70,38 +77,54 @@ Documento de presentación y guía técnica del proyecto **Mi Recetario**, desar
 * **HTML5:** Marcado semántico (`<header>`, `<dialog>`, `<details>`, `<summary>`, `<main>`, `<input type="file">`).
 * **CSS3 Moderno:**
   * Variables CSS nativas (*Design Tokens* para paleta clara y oscura).
-  * Flexbox y CSS Grid para diagramación fluida.
-  * Estilos de vidrio esmerilado (*Glassmorphism* con `backdrop-filter`).
-  * Estilos `@media print` para formato de impresión en papel.
-  * Animaciones mediante `@keyframes` y curvas de aceleración `cubic-bezier`.
-* **JavaScript Vanilla (ES6+):**
-  * Sin librerías ni frameworks (código nativo puro y liviano).
-  * Delegación de eventos (*Event Delegation*) para optimizar el rendimiento del DOM.
-  * Funciones de orden superior (`filter`, `map`, `reduce`, `find`).
-* **APIs Nativas del Navegador:**
-  * `localStorage API` (persistencia local sin base de datos).
-  * `HTML Canvas API` (procesamiento y compresión gráfica).
-  * `FileReader API` (lectura local de imágenes y archivos JSON).
-  * `HTML Dialog API` (gestión accesible de ventanas modales).
+  * CSS Grid y Flexbox responsivo.
+  * Animaciones suaves con curvas de aceleración cubic-bezier.
+  * Reglas para medios impresos (`@media print`).
+* **JavaScript Moderno (ES6+):**
+  * Manipulación reactiva del DOM sin librerías externas.
+  * API `localStorage` para almacenamiento persistente.
+  * API `HTMLCanvasElement` para compresión y optimización de imágenes en el cliente.
+  * API `FileReader` y `Blob` para exportar e importar datos en formato JSON.
+* **Tipografías de Google Fonts:**
+  * *Playfair Display* (títulos con personalidad gastronómica).
+  * *Plus Jakarta Sans* (textos técnicos y legibilidad).
 
 ---
 
-## 🎤 5. Guion Sugerido para la Demostración en Clase (Paso a Paso)
+## 🎤 5. Guía de Presentación Paso a Paso (Demostración en Vivo para la Clase)
 
-1. **Introducción (1 min):** Mostrar la interfaz inicial, la tarjeta por defecto (*Tortilla de papas*) y explicar el concepto de recetario personal rápido.
-2. **Interactividad en cocina (1 min):** Desplegar la receta y mostrar el checklist interactivo marcando ingredientes usados.
-3. **Búsqueda inteligente (1 min):** Escribir *"papas"* en el buscador para demostrar que busca tanto por nombre como por ingredientes.
-4. **Modo Oscuro (30 seg):** Tocar el botón de tema (☀️/🌙) y mostrar la adaptación de colores y contraste.
-5. **Carga y compresión de imagen (1 min):** Crear una receta nueva, subir una fotografía y explicar que la imagen se optimiza automáticamente para no saturar la memoria local.
-6. **Edición y borrado seguro (1 min):** Modificar la receta creada y luego demostrar el diálogo de confirmación de eliminación.
-7. **Portabilidad de datos (30 seg):** Presionar *"Exportar"* para descargar el archivo JSON y mostrar cómo se respalda la información.
+Para presentar el proyecto ante el docente y compañeros de clase, sugerimos seguir este orden demostrativo:
+
+1. **Apertura e Introducción:**
+   * Explicar el objetivo del proyecto: crear un recetario enfocado en la experiencia de usuario real mientras se cocina.
+   * Mostrar el diseño visual general, la paleta cálida y la jerarquía de las tarjetas.
+
+2. **Demostración de Búsqueda y Filtros:**
+   * Escribir *"papas"* en el buscador para demostrar que busca dentro de los ingredientes y no solo en el título.
+   * Filtrar por categoría (*Plato principal*).
+   * Marcar la receta con la estrella (⭐) y presionar el botón *"Favoritos"*.
+
+3. **Demostración del Asistente en la Cocina:**
+   * Abrir el acordeón *"Ver preparación e ingredientes"*.
+   * Tocar los checkboxes para simular cómo se tachan los ingredientes ya usados mientras se cocina.
+   * Presionar el botón *"Imprimir"* para mostrar cómo se genera una ficha limpia para papel o PDF sin barras ni botones.
+
+4. **Demostración de Creación y Edición:**
+   * Abrir el modal *"Añadir receta"* y mostrar los metadatos (tiempo, porciones, dificultad).
+   * Cargar una foto pesada y explicar cómo la web la comprime automáticamente sin trabarse.
+   * Editar una receta existente para comprobar que no se pierden datos.
+   * Intentar eliminar una receta para mostrar el diálogo de confirmación que previene errores del usuario.
+
+5. **Demostración de Modo Oscuro y Respaldo:**
+   * Tocar el botón 🌙 en la cabecera para alternar a tema oscuro y explicar la ventaja al cocinar con poca luz.
+   * Presionar *"Exportar"* para descargar el archivo `.json` de respaldo.
 
 ---
 
-## 💻 6. ¿Cómo Ejecutar el Proyecto?
+## 💻 6. Instrucciones de Ejecución
 
-* **Opción directa:** Hacer doble clic sobre `Codigo/index.html` para abrirlo en cualquier navegador (Firefox, Chrome, Edge, Safari).
-* **Opción con servidor local:**
+* **Ejecución directa:** Abrir directamente el archivo `Codigo/index.html` en cualquier navegador web moderno (Google Chrome, Firefox, Microsoft Edge o Safari).
+* **Ejecución con servidor local (opcional):**
   ```bash
   cd Codigo
   python3 -m http.server 8000
@@ -112,6 +135,9 @@ Documento de presentación y guía técnica del proyecto **Mi Recetario**, desar
 
 ## 📁 7. Estructura de Archivos
 
-* `Codigo/index.html`: Archivo principal con la aplicación completa (HTML + CSS + JavaScript integrados).
+* `Codigo/index.html`: Archivo principal con la aplicación web completa (HTML, CSS y JavaScript integrados).
 * `Codigo/recetas.html`: Copia sincronizada del código de la aplicación.
-* `README.md`: Este documento de presentación para la clase.
+* `Codigo/tortilla.jpg`: Fotografía optimizada para la receta inicial de Tortilla de papas.
+* `Docs/Como_Funciona.md`: Guía explicativa para personas sin conocimientos de código.
+* `Docs/Stack.md`: Ficha técnica del Stack Tecnológico del proyecto.
+* `README.md`: Este documento de presentación y guía técnica para la clase.
