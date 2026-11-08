@@ -1,7 +1,7 @@
 # 📖 Proyecto: Mi Recetario (Experiencia de Usuario)
 
 ### 🎓 TRABAJO FINAL: EXPERIENCIA DE USUARIO
-* **Nivel académico:** 2.º Bachillerato · Segundo Parcial · Noviembre 2026
+* **Clase:** 2.º Bachillerato · Segundo Parcial · Noviembre 2026
 * **Centro educativo:** UTU María Espínola Espínola
 * **Grupo:** BT Tecnología de la Información
 * **Estudiantes:**
